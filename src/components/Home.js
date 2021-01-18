@@ -1,4 +1,6 @@
 import React, {useState} from 'react'
+import BlogList from './BlogList.js';
+import './Home.css';
 
 export default function Home() {
 
@@ -8,9 +10,14 @@ export default function Home() {
         { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'mario', id: 3 }
       ])
 
+    const handleDelete = (id) => {
+        const newBlogs = blogs.filter( blog => blog.id !== id )
+        setBlogs(newBlogs)
+    }
+
     return (
         <div>
-            <h2>Home Page</h2>
+            <BlogList blogs ={blogs} title="Hello World" handleDelete={handleDelete}/>   
         </div>
     )
 }
