@@ -9,7 +9,10 @@ export const useFetch = (url) => {
 
     // Called -> Everytime component is rendered
     useEffect(() => {
-        fetch(url)
+        
+        const abortCont = new AbortController(); // use to cancel a fetch
+
+        fetch(url, {signal: abortCont.signal})
             .then(response => {
                 if(!response.ok) {
                     setLoading(false)
@@ -23,8 +26,15 @@ export const useFetch = (url) => {
                 setError(null)
             })
             .catch( e => { 
-                setError(e.message)
+                if(e.name === 'AbortError'){
+                    console.log("Fetch Aborted")
+                } else {
+                    setError(e.message)
+                    setLoading(false)
+                }
             })
+        
+        return  () => abortCont.abort(); // aborts the fetch
     }, [url]) // [] -> avoids re-render, i.e. will only runs once if url changes
 
     return {

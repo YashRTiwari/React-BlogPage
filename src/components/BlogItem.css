@@ -11,3 +11,7 @@
 .blog-preview h2 {
   color: tomato;
 }
+
+.blog-lists a {
+  text-decoration: none;
+}
