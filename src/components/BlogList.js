@@ -1,7 +1,7 @@
 import React from 'react'
 import './BlogItem.css';
 
-export default function BlogList({blogs, title, handleDelete}) {
+export default function BlogList({blogs, title, }) {
 
     
 
@@ -13,7 +13,6 @@ export default function BlogList({blogs, title, handleDelete}) {
                 <div className="blog-preview" key={item.id}>
                     <h2>{item.title}</h2>
                     <p>{item.author}</p>
-                    <button onClick={() => handleDelete(item.id)}>Delete Blog</button>
                 </div>);
              })}
         </div>
