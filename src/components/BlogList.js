@@ -3,8 +3,6 @@ import './BlogItem.css';
 
 export default function BlogList({blogs, title, }) {
 
-    
-
     return (
         <div className="blog-lists">
             <h2>{title}</h2>
